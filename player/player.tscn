@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qsrb0y22iklp"]
 
 [ext_resource type="Script" uid="uid://cdu0dos3o8ure" path="res://player/scripts/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cb3i2ba6mw7ir" path="res://player/states/00_player_state.gd" id="2_rkbax"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e8yxj"]
 size = Vector2(18, 48)
@@ -18,3 +19,11 @@ texture = SubResource("PlaceholderTexture2D_e8yxj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=290680874]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_e8yxj")
+
+[node name="States" type="Node" parent="." unique_id=1400930415]
+
+[node name="Idle" type="Node" parent="States" unique_id=970749829]
+script = ExtResource("2_rkbax")
+
+[node name="Run" type="Node" parent="States" unique_id=1016486627]
+script = ExtResource("2_rkbax")

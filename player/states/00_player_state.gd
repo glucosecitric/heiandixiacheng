@@ -4,7 +4,7 @@ class_name PlayerState extends Node
 
 #endregion
 
-var palyer : Player
+var player : Player
 var next_state : PlayerState
 
 func init() -> void:
