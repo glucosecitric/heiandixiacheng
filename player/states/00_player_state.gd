@@ -1,7 +1,8 @@
 class_name PlayerState extends Node
 
 #region 这是一行注释 
-
+@onready var idle: PlayerStateIdle = %Idle
+@onready var run: PlayerStateRun = %Run 
 #endregion
 
 var player : Player

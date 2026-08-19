@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 var direction : Vector2 = Vector2.ZERO
 var gravity = 880
+@export var move_speed : float = 100
 
 #region #状态机的变量
 var states : Array[ PlayerState ]
@@ -57,6 +58,7 @@ func initialize_states() -> void :
 		state.init()
 	
 	current_state.enter()
+	$Label.text = current_state.name
 	change_state( current_state )
 	pass 	
 	
@@ -72,11 +74,14 @@ func change_state( new_state : PlayerState ):
 	states.push_front( new_state )
 	current_state.enter()
 	states.resize( 4 )
+	$Label.text = current_state.name
 	pass 
 	
 func update_direction()->void:
 	var prev_direction : Vector2 = direction
-	direction = Input.get_vector("left","right","up","down")
+	var x_axis = Input.get_axis("left","right")
+	var y_axis = Input.get_axis("up","down")
+	direction = Vector2(x_axis,y_axis)
 	pass
 	
 
