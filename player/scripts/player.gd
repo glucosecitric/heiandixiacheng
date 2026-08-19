@@ -17,12 +17,17 @@ func _ready() -> void:
 	initialize_states()
 	pass
 
-func _process(delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	change_state( current_state.handle_input( event ))
+	pass
+
+func _process(_delta: float) -> void:
+	update_direction()
+	change_state( current_state.process(_delta	))
 	pass
 
 func _physics_process(_delta: float) -> void:
-
-#region  被注释的运动代码
+	#region  被注释的运动代码
 	#velocity.x = 0.0
 	#if Input.is_action_pressed("left"):
 		#velocity.x = -100
@@ -32,6 +37,10 @@ func _physics_process(_delta: float) -> void:
 	#velocity.y += 690 * _delta
 	#move_and_slide()
 #endregion
+	
+	velocity.y += gravity * _delta
+	move_and_slide()
+	change_state( current_state.physics_process( _delta ) )
 	pass
 
 func initialize_states() -> void :
@@ -65,7 +74,11 @@ func change_state( new_state : PlayerState ):
 	states.resize( 4 )
 	pass 
 	
+func update_direction()->void:
+	var prev_direction : Vector2 = direction
+	direction = Input.get_vector("left","right","up","down")
+	pass
 	
-	
+
 	
 	

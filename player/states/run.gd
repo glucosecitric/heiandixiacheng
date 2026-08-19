@@ -1,11 +1,4 @@
-class_name PlayerState extends Node
-
-#region 这是一行注释 
-
-#endregion
-
-var player : Player
-var next_state : PlayerState
+class_name PlayerStateRun extends PlayerState
 
 func init() -> void:
 	pass
@@ -24,6 +17,4 @@ func process(_delta: float) -> PlayerState:
 	
 func physics_process(_delta: float) -> PlayerState:
 	return next_state
-	
-	
 	
